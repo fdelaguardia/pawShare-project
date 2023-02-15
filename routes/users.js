@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+const fileUploader = require('../config/cloudinary.config');
+
 const User = require('../models/User.model')                //getting access from the User model
 
 const mongoose = require('mongoose')

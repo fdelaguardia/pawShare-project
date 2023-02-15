@@ -1,4 +1,20 @@
 {{> navBar}}
+<br>
+
+<h1>My Pets</h1>
 
 <br>
-<a href="/home/addPet" class="add-pet">Add a new pet</a>
+<a href="/home/new-pet" class="add-pet">Add a new pet</a>
+<br>
+<div class="outside-div">
+    {{#each foundPets}}
+       
+        <div class="div-border">
+            <img class="icon-img" src="{{iconImage}}" alt="icon-image">
+            <p>{{name}}</p>
+            <a href="/home/pet-page/{{_id}}" class="home-btns">See pet page</a>
+            <hr>
+        </div>
+       
+    {{/each}}
+</div>

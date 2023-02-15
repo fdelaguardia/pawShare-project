@@ -4,8 +4,10 @@ const petSchema = new Schema(
   {
     name: String,
     breed: String,
-    sex: String,
+    gender: String,
     age: String,
+    iconImage: String,
+    petBio: String,
     owner: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {

@@ -1,0 +1,27 @@
+<h1>Edit</h1>
+
+<form action="/home/edit-pet/{{_id}}"  method="post" enctype="multipart/form-data" class="testing">
+    
+    <label for="">Name</label>
+    <input type="text" name="name" value="{{name}}">
+    <br>
+    <label for="">Breed</label>
+    <input type="text" name="breed" value="{{breed}}">
+    <br>
+    <label for="">Gender</label>
+    <input type="text" name="gender" value="{{gender}}">
+    <br>
+    <label for="">Age</label>
+    <input type="text" name="age" value="{{age}}">
+    <br>
+
+    <label for="">Icon Image</label>
+    <input type="file" name="iconImage" value="{{iconImage}}">
+    <br>
+
+    <label for="">Pet's Bio</label>
+    <textarea type="text" name="petBio" rows="6" cols="30">{{petBio}}</textarea>
+    <br>
+
+    <button type="submit">Update</button>
+</form>

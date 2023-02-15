@@ -1,0 +1,34 @@
+{{> navBar}}
+<br>
+<h1>Pet Page</h1>
+<br>
+
+<div class="outside-div">
+    <div class="border-divider">
+        <img class="icon-img-post" src="{{foundPet.iconImage}}" alt="icon-image">
+        <hr>
+        <div>
+            <span class="span-color">Name: </span><span>{{foundPet.name}}</span><br>
+            <span class="span-color">Breed: </span><span>{{foundPet.breed}}</span><br>
+            <span class="span-color">Gender: </span><span>{{foundPet.gender}}</span><br>
+            <span class="span-color">Age: </span><span>{{foundPet.age}}</span><br>
+            <span class="span-color">Pet's Bio: </span><span>{{foundPet.petBio}}</span>
+        </div>
+        <hr>
+    </div>
+</div>
+<br><br>
+
+<div class="posts-order">
+    {{#each foundPosts}}
+        <div class="posts-outside-div">
+            <div class="posts-div-border">
+                <img class="posts-img-post" src="{{postImage}}" alt="post-image">
+                <h3>{{description}}</h3>
+                <br><br>
+            </div>
+        </div>
+
+    <br><br>
+    {{/each}}
+</div>

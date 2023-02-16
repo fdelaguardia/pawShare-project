@@ -89,8 +89,9 @@ router.get('/pet-page/:id', (req, res, next) => {
             if(String(foundPet.owner._id) === user._id){
                 Post.find({pet: req.params.id})
                     .populate('pet')
+                    .populate('comments')
                     .then((foundPosts) => {
-                        
+                        console.log(foundPosts)
                         res.render('pets/my-pet-page', {foundPet, user, foundPosts})
                     })
                     .catch((err) => {
@@ -226,27 +227,61 @@ router.get('/edit-post/:id', (req, res, next) => {
         console.log(err)
       })
 })
-router.post('/edit-post/:id', fileUploader.single('postImage'), (req, res, next) => { 
-    const description = req.body.description
+router.post('/edit-post/:id', fileUploader.single('postImage'), (req, res, next) => {
 
-    if( !description ){     //if any input is blank render the same page with an error message
-        res.render('posts/new-pet.hbs', {errorMessage: 'All fields are mandaroty.'})
-        return;
+    const { description } = req.body
+
+    if (req.file && description) {
+
+        Post.findByIdAndUpdate(req.params.id, {
+            description,
+            postImage: req.file.path
+        }, {new: true})
+        .then((updatedPost) => {
+            res.redirect(`/home/pet-page/${String(updatedPost.pet)}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+
+    } else if ( req.file && !description ) {
+        Post.findByIdAndUpdate(req.params.id, {
+            postImage: req.file.path
+        }, {new: true})
+        .then((updatedPost) => {
+            res.redirect(`/home/pet-page/${String(updatedPost.pet)}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    } else {
+        Post.findByIdAndUpdate(req.params.id, {
+            description
+        }, {new: true})
+        .then((updatedPost) => {
+            res.redirect(`/home/pet-page/${String(updatedPost.pet)}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
     }
 
-    Post.findByIdAndUpdate(req.params.id, {
-        description,
-        postImage: req.file.path,
-
-        owner: req.session.user._id 
-    }, {new: true})
-    .then((updatedPost) => {
-        res.redirect(`/home/pet-page/${String(updatedPost.pet)}`)
-    })
-    .catch((err) => {
-        console.log(err)
-    })
 })
+// router.post('/edit-post/:id', fileUploader.single('postImage'), (req, res, next) => { 
+//     const description = req.body.description
+
+//     Post.findByIdAndUpdate(req.params.id, {
+//         description,
+//         postImage: req.file.path,
+//         owner: req.session.user._id 
+//     }, {new: true})
+//     .then((updatedPost) => {
+//         res.redirect(`/home/pet-page/${String(updatedPost.pet)}`)
+//     })
+//     .catch((err) => {
+//         console.log(err)
+//     })
+// })
 
 
 
@@ -266,24 +301,30 @@ router.get('/delete-post/:id', (req, res, next) => {
 
 
 
-router.post(('/add-comment/:id'), (req, res, next) => {
-    Comment.create({
-        comment: req.body.comment,
-        user: req.session.user._id,
-        post: req.params.id,
-    })
-    .then((foundComment) => {
-        return Post.findByIdAndUpdate(String(foundComment.post), {
-            $push: {comments: foundComment._id}
-        }, {new: true})
-    })
-    .then((updatedPost) => {
-        console.log(updatedPost)
-        res.redirect(`/home/pet-page/${String(updatedPost.pet)}`)
-    })
-    .catch((err) => {
-        console.log(err)
-    })
+router.post(('/add-comment/:id/:pet'), (req, res, next) => {
+    if(req.body.comment){
+        Comment.create({
+            comment: req.body.comment,
+            user: req.session.user._id,
+            post: req.params.id,
+        })
+        .then((foundComment) => {
+            return Post.findByIdAndUpdate(String(foundComment.post), {
+                $push: {comments: foundComment._id}
+            }, {new: true})
+        })
+        .then((updatedPost) => {
+            console.log(updatedPost)
+            res.redirect(`/home/pet-page/${String(updatedPost.pet)}`)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+    }
+    else {
+        res.redirect(`/home/pet-page/${req.params.pet}`)
+    }
+    
 })
 
 

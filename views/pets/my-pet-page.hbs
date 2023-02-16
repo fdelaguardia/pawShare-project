@@ -42,17 +42,15 @@
         <div class="posts-div-border">
             <h3>Comments</h3>
 
-            <form action="/home/add-comment/{{_id}}" method="post">
+            <form action="/home/add-comment/{{_id}}/{{pet._id}}" method="post">
                 <input type="text" name="comment">
                 <button type="submit">Add Comment</button>
             </form>
 
-            {{#if commentFound}}
+            {{#if comments}}
                 <ul>
-                {{#each commentFound}}
-                    <li>
+                {{#each comments}}           <li>
                         <p>{{comment}}</p>
-                        <h6>-{{user.fullName}}</h6>
                     </li>
                 {{/each}}
                 </ul>

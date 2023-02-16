@@ -8,6 +8,7 @@ const petSchema = new Schema(
     age: String,
     iconImage: String,
     petBio: String,
+    posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
     owner: { type: Schema.Types.ObjectId, ref: "User" },
   },
   {

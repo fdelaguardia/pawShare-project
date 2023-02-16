@@ -4,6 +4,7 @@ const postSchema = new Schema(
   {
     description: String,
     postImage: String,
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comment" }],
     pet: { type: Schema.Types.ObjectId, ref: "Pet" },
     petOwner: { type: Schema.Types.ObjectId, ref: "User" },
   },

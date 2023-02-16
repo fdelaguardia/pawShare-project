@@ -15,6 +15,7 @@
             <span class="span-color">Pet's Bio: </span><span>{{foundPet.petBio}}</span>
             <br><br>
             <a href="/home/edit-pet/{{foundPet._id}}" class="home-btns">Edit pet info</a>
+            <a href="/home/delete-pet/{{foundPet._id}}" class="home-btns">Remove Pet</a>
         </div>
         <hr>
     </div>
@@ -23,7 +24,7 @@
 
 <br><br>
 <a href="/home/new-post/{{foundPet._id}}" class="add-pet">Add Post</a>
-<br><br>
+
 
 <div class="posts-order">
 {{#each foundPosts}}
@@ -31,8 +32,35 @@
         <div class="posts-div-border">
             <img class="posts-img-post" src="{{postImage}}" alt="post-image">
             <h3>{{description}}</h3>
-            <br><br>
+            <div>
+                <a href="/home/edit-post/{{_id}}" class="home-btns">Edit Post</a>
+                <a href="/home/delete-post/{{_id}}" class="home-btns">Delete Post</a>
+            </div>
+            <br>
         </div>
+
+        <div class="posts-div-border">
+            <h3>Comments</h3>
+
+            <form action="/home/add-comment/{{_id}}" method="post">
+                <input type="text" name="comment">
+                <button type="submit">Add Comment</button>
+            </form>
+
+            {{#if commentFound}}
+                <ul>
+                {{#each commentFound}}
+                    <li>
+                        <p>{{comment}}</p>
+                        <h6>-{{user.fullName}}</h6>
+                    </li>
+                {{/each}}
+                </ul>
+            {{else}}
+                <p>No Reviews yet</p>
+            {{/if}}
+        </div>
+        <hr>
     </div>
 
 <br><br>

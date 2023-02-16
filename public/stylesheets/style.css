@@ -193,6 +193,8 @@ hr {
   border-radius: 12px;
   background-color: #2e3031;
   display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: space-around;
 }
 .posts-div-border {
@@ -209,3 +211,10 @@ hr {
   width: 100%;
   border-radius: 10px;
 }
+
+
+
+
+
+
+

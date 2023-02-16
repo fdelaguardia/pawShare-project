@@ -1,0 +1,15 @@
+<h1>Edit</h1>
+
+<form action="/home/edit-post/{{_id}}"  method="post" enctype="multipart/form-data">
+    <br>
+    <label for="">Image</label>
+    <input type="file" name="postImage" value="{{postImage}}">
+    <br>
+
+    <label for="">Description</label>
+    <textarea type="text" name="description" rows="6" cols="30">{{description}}</textarea>
+    <br>
+
+    <button type="submit">Update Post</button>
+</form>
+

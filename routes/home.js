@@ -91,15 +91,15 @@ router.get('/pet-page/:id', (req, res, next) => {
                     .populate('pet')
                     .populate('comments')
                     .then((foundPosts) => {
-                        console.log(foundPosts)
                         res.render('pets/my-pet-page', {foundPet, user, foundPosts})
                     })
                     .catch((err) => {
                         console.log(err)
                     })
-            } else {
-                Post.find({pet: req.params.id})
+                } else {
+                    Post.find({pet: req.params.id})
                     .populate('pet')
+                    .populate('comments')
                     .then((foundPosts) => {
                         res.render('pets/pet-page', {foundPet, user, foundPosts})
                     })
@@ -151,7 +151,8 @@ router.post('/new-post/:id', fileUploader.single('postImage'), (req, res, next) 
         description: req.body.description,
         postImage: req.file.path,
         pet: req.params.id,
-        owner: req.session.user._id
+        owner: req.session.user._id,
+        user: req.session.user
     })
     .then(() => {
         res.redirect(`/home/pet-page/${req.params.id}`)
@@ -267,21 +268,8 @@ router.post('/edit-post/:id', fileUploader.single('postImage'), (req, res, next)
     }
 
 })
-// router.post('/edit-post/:id', fileUploader.single('postImage'), (req, res, next) => { 
-//     const description = req.body.description
 
-//     Post.findByIdAndUpdate(req.params.id, {
-//         description,
-//         postImage: req.file.path,
-//         owner: req.session.user._id 
-//     }, {new: true})
-//     .then((updatedPost) => {
-//         res.redirect(`/home/pet-page/${String(updatedPost.pet)}`)
-//     })
-//     .catch((err) => {
-//         console.log(err)
-//     })
-// })
+
 
 
 
@@ -305,7 +293,7 @@ router.post(('/add-comment/:id/:pet'), (req, res, next) => {
     if(req.body.comment){
         Comment.create({
             comment: req.body.comment,
-            user: req.session.user._id,
+            user: req.session.user,
             post: req.params.id,
         })
         .then((foundComment) => {

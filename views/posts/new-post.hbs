@@ -1,15 +1,18 @@
-<h1>New Post</h1>
+<div class="welcome-div">
+    <h1>New Post</h1>
 
-<form action="/home/new-post/{{id}}"  method="post" enctype="multipart/form-data">
-    <br>
-    <label for="">Image</label>
-    <input type="file" name="postImage">
-    <br>
+    <form action="/home/new-post/{{id}}"  method="post" enctype="multipart/form-data">
+        <br>
+        <label for=""><h2>Image</h2></label>
+        <input class="login-input" type="file" name="postImage">
+        <br>
 
-    <label for="">Description</label>
-    <textarea type="text" name="description" rows="6" cols="30"> </textarea>
-    <br>
+        <label for=""><h2>Description</h2></label>
+        <textarea class="text-area" type="text" name="description" rows="6" cols="40"> </textarea>
+        <br>
 
-    <button type="submit">Post</button>
-</form>
+        <button class="login-btn" type="submit"><h2>Post</h2></button>
+        <br>
+    </form>
+</div>
 

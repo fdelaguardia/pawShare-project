@@ -218,3 +218,137 @@ hr {
 
 
 
+
+
+
+/* Pet Comments */
+details {
+  width: 100%;
+  margin: 5px;
+}
+summary {
+  font-size: 25px;
+}
+.new-comment {
+  width: 90%;
+  border-radius: 25px;
+  background-color: #db7210;
+  color: white;
+  font-size: 16px;
+  padding: 15px; 
+  height: 15px; 
+}
+.new-comment-btn {
+  color: white;
+  text-decoration: none;
+  background-color: #db7210;
+  padding: 0 10px;
+  border-radius: 25px;
+}
+.new-comment-btn:hover {
+  border: 3px solid white;
+}
+.mar {
+  margin-left: 30px;
+}
+
+
+
+
+
+/* Welcome to Paw Share */
+.welcome-div {
+  width: 40%;
+  border-radius: 12px;
+  background-color: #2e3031;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+.welcome-div a {
+  text-decoration: none;
+}
+
+
+
+
+
+
+/* Login/Singn route */
+.login-input {
+  width: 90%;
+  border-radius: 25px;
+  background-color: #db7210;
+  color: white;
+  font-size: 16px;
+  padding: 15px; 
+  height: 15px;
+}
+.login-btn {
+  color: white;
+  text-decoration: none;
+  background-color: #db7210;
+  padding: 0 20px;
+  border-radius: 25px;
+}
+.login-btn:hover {
+  border: 3px solid white;
+}
+
+
+
+
+
+
+/* New Pet route */
+.new-pet-div {
+  width: 40%;
+  border-radius: 12px;
+  background-color: #2e3031;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  max-height: 80%;
+}
+.new-pet-div div{
+  width: 100%;
+  border-radius: 12px;
+  background-color: #2e3031;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  max-height: 80%;
+}
+.new-pet-div label input h2{
+  margin: 0
+}
+.new-pet-input {
+  width: 90%;
+  border-radius: 25px;
+  background-color: #db7210;
+  color: white;
+  font-size: 16px;
+  padding: 5px; 
+  height: 15px;
+  margin: 0;
+}
+.new-pet-btn {
+  color: white;
+  text-decoration: none;
+  background-color: #db7210;
+  padding: 0 20px;
+  border-radius: 25px;
+  font-size: 20px;
+}
+.new-pet-btn:hover {
+  border: 3px solid white;
+}
+.text-area {
+  background-color: #db7210;
+  color: white
+}
+
+

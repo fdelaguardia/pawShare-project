@@ -1,27 +1,30 @@
-<h1>Edit</h1>
+<div class="new-pet-div">
+    <h1>Edit</h1>
 
-<form action="/home/edit-pet/{{_id}}"  method="post" enctype="multipart/form-data" class="testing">
-    
-    <label for="">Name</label>
-    <input type="text" name="name" value="{{name}}">
-    <br>
-    <label for="">Breed</label>
-    <input type="text" name="breed" value="{{breed}}">
-    <br>
-    <label for="">Gender</label>
-    <input type="text" name="gender" value="{{gender}}">
-    <br>
-    <label for="">Age</label>
-    <input type="text" name="age" value="{{age}}">
-    <br>
+    <form action="/home/edit-pet/{{_id}}"  method="post" enctype="multipart/form-data" class="testing">
+        
+        <label for=""><h2>Name</h2></label>
+        <input class="new-pet-input" type="text" name="name" value="{{name}}">
+        <br>
+        <label for=""><h2>Breed</h2></label>
+        <input class="new-pet-input" type="text" name="breed" value="{{breed}}">
+        <br>
+        <label for=""><h2>Gender</h2></label>
+        <input class="new-pet-input" type="text" name="gender" value="{{gender}}">
+        <br>
+        <label for=""><h2>Age</h2></label>
+        <input class="new-pet-input" type="text" name="age" value="{{age}}">
+        <br>
 
-    <label for="">Icon Image</label>
-    <input type="file" name="iconImage" value="{{iconImage}}">
-    <br>
+        <label for=""><h2>Icon Image</h2></label>
+        <input class="new-pet-input" type="file" name="iconImage" value="{{iconImage}}">
+        <br>
 
-    <label for="">Pet's Bio</label>
-    <textarea type="text" name="petBio" rows="6" cols="30">{{petBio}}</textarea>
-    <br>
+        <label for=""><h2>Pet's Bio</h2></label>
+        <textarea class="text-area" type="text" name="petBio" rows="6" cols="35">{{petBio}}</textarea>
+        <br>
 
-    <button type="submit">Update</button>
-</form>
+        <button class="new-pet-btn" type="submit">Update</button>
+        <br>
+    </form>
+</div>

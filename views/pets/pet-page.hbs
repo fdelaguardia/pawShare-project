@@ -17,7 +17,6 @@
         <hr>
     </div>
 </div>
-<br><br>
 
 <div class="posts-order">
     {{#each foundPosts}}
@@ -25,10 +24,30 @@
             <div class="posts-div-border">
                 <img class="posts-img-post" src="{{postImage}}" alt="post-image">
                 <h3>{{description}}</h3>
-                <br><br>
+            
             </div>
+
+            <div class="posts-div-border">
+                <details>
+                    <summary>Comments</summary>
+
+                    <form class="form-size" action="/home/add-comment/{{_id}}/{{pet._id}}" method="post">
+                        <input class="new-comment" type="text" name="comment">
+                        <button class="new-comment-btn" type="submit"><h3>Comment</h3></button>
+                    </form>
+
+                    {{#if comments}}                   
+                        {{#each comments}}      
+                            <h3 class="mar">{{comment}}</h3>
+                        {{/each}}
+                    {{else}}
+                        <p>No Reviews yet</p>
+                    {{/if}}
+                </details>
+            </div>
+            
         </div>
 
-    <br><br>
+        <br><br>
     {{/each}}
 </div>

@@ -1,29 +1,31 @@
-<h2>Sign Up</h2>
+<div class="welcome-div">
+    <h1>Sign Up</h1>
 
-<form action="/users/signup"  method="post">
+    <form action="/users/signup"  method="post">
+        
+        <label for=""><h2>First Name</h2></label>
+        <input class="login-input" type="text" name="firstName">
+        
+        <label for=""><h2>Last Name</h2></label>
+        <input class="login-input" type="text" name="lastName">
+        
+        <label for=""><h2>Email</h2></label>
+        <input class="login-input" type="email" name="email">
+        
+        <label for=""><h2>Password</h2></label>
+        <input class="login-input" type="password" name="password">
+        <br>
+        <button class="login-btn" type="submit"><h2>Create Account</h2></button>
+
+    </form>
+
+    {{#if errorMessage}}
+
+        <p style="text-align: center;">{{errorMessage}}</p>
+
+    {{/if}}
+
+
     <br>
-    <label for="">First Name</label>
-    <input type="text" name="firstName">
-    <br>
-    <label for="">Last Name</label>
-    <input type="text" name="lastName">
-    <br>
-    <label for="">Email</label>
-    <input type="email" name="email">
-    <br>
-    <label for="">Password</label>
-    <input type="password" name="password">
-    <br>
-    <button type="submit">Create Account</button>
-
-</form>
-
-{{#if errorMessage}}
-
-    <p>{{errorMessage}}</p>
-
-{{/if}}
-
-
-<br><br><br><br>
-<p>Do you already have an account? Log in <a href="/users/login">here!</a></p>
+    <p>Do you already have an account? <a style="color: #db7210;" href="/users/login">Log in here!</a></p>
+</div>

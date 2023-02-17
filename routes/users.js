@@ -1,8 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-const fileUploader = require('../config/cloudinary.config');
-
 const User = require('../models/User.model')                //getting access from the User model
 
 const mongoose = require('mongoose')
@@ -23,6 +21,14 @@ router.post('/signup', (req, res, next) => {                //gathering the info
 
   if( !firstName || !lastName || !email || !password ){     //if any input is blank render the same page with an error message
     res.render('users/signup.hbs', {errorMessage: 'All fields are mandaroty. Please provide your first name, last name, email, and password.'})
+    return;
+  }
+
+  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+  if (!regex.test(password)) {
+    res
+      .status(500)
+      .render('users/signup.hbs', { errorMessage: 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' });
     return;
   }
   

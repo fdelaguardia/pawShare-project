@@ -1,20 +1,22 @@
-<h2>Log in</h2>
+<div class="welcome-div">
+    <h1>Log in</h1>
 
-<form action="/users/login"  method="post">
-    <br>
-    <label for="">Email</label>
-    <input type="email" name="email">
-    <br>
-    <label for="">Password</label>
-    <input type="password" name="password">
-    <br>
-    <button type="submit">Log in</button>
+    <form action="/users/login"  method="post">
+        <br>
+        <label for=""><h2>Email</h2></label>
+        <input class="login-input" type="email" name="email">
+        <br><br>
+        <label for=""><h2>Password</h2></label>
+        <input class="login-input" type="password" name="password">
+        <br><br>
+        <button class="login-btn" type="submit"><h2>Log in</h2></button>
 
-</form>
+    </form>
 
-{{#if errorMessage}}
-    <p>{{errorMessage}}</p>
-{{/if}}
+    {{#if errorMessage}}
+        <p>{{errorMessage}}</p>
+    {{/if}}
 
-<br><br><br><br>
-<p>Don't have an account? Sign up <a href="/users/signup">here!</a></p>
+    <br><br><br><br>
+    <p>Don't have an account? <a style="color: #db7210;" href="/users/signup">Sign up here!</a></p>
+</div>

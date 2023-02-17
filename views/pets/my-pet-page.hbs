@@ -25,42 +25,40 @@
 <br><br>
 <a href="/home/new-post/{{foundPet._id}}" class="add-pet">Add Post</a>
 
-
 <div class="posts-order">
-{{#each foundPosts}}
-    <div class="posts-outside-div">
-        <div class="posts-div-border">
-            <img class="posts-img-post" src="{{postImage}}" alt="post-image">
-            <h3>{{description}}</h3>
-            <div>
-                <a href="/home/edit-post/{{_id}}" class="home-btns">Edit Post</a>
-                <a href="/home/delete-post/{{_id}}" class="home-btns">Delete Post</a>
+    {{#each foundPosts}}
+        <div class="posts-outside-div">
+            <div class="posts-div-border">
+                <img class="posts-img-post" src="{{postImage}}" alt="post-image">
+                <h3>{{description}}</h3>
+                <div>
+                    <a href="/home/edit-post/{{_id}}" class="home-btns">Edit Post</a>
+                    <a href="/home/delete-post/{{_id}}" class="home-btns">Delete Post</a>
+                </div>
+                <br>
             </div>
-            <br>
+
+            <div class="posts-div-border">
+                <details>
+                    <summary>Comments</summary>
+
+                    <form class="form-size" action="/home/add-comment/{{_id}}/{{pet._id}}" method="post">
+                        <input class="new-comment" type="text" name="comment">
+                        <button class="new-comment-btn" type="submit"><h3>Comment</h3></button>
+                    </form>
+
+                    {{#if comments}}                   
+                        {{#each comments}}      
+                            <h3 class="mar">{{comment}}</h3>
+                        {{/each}}
+                    {{else}}
+                        <p>No Reviews yet</p>
+                    {{/if}}
+                </details>
+            </div>
+            
         </div>
 
-        <div class="posts-div-border">
-            <h3>Comments</h3>
-
-            <form action="/home/add-comment/{{_id}}/{{pet._id}}" method="post">
-                <input type="text" name="comment">
-                <button type="submit">Add Comment</button>
-            </form>
-
-            {{#if comments}}
-                <ul>
-                {{#each comments}}           <li>
-                        <p>{{comment}}</p>
-                    </li>
-                {{/each}}
-                </ul>
-            {{else}}
-                <p>No Reviews yet</p>
-            {{/if}}
-        </div>
-        <hr>
-    </div>
-
-<br><br>
-{{/each}}
+        <br><br>
+    {{/each}}
 </div>

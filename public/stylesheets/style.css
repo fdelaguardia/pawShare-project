@@ -141,7 +141,8 @@ form input{
 
 /* Pets images */
 .icon-img {
-  width: 200px;
+  max-height: 50%;
+  max-width: 200px;
   border-radius: 10px;
 }
 

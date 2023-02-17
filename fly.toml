@@ -6,8 +6,7 @@ kill_timeout = 5
 processes = []
 
 [env]
-POST = "8080"
-SESS_SECRET = swordfish
+  PORT = "8080"
 
 [experimental]
   auto_rollback = true
